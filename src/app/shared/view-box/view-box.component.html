@@ -1,0 +1,15 @@
+<div class="py-1 px-3" >
+    <div class="d-flex">
+        <div class="fix-box">
+            <ng-content select="[box]"></ng-content>
+        </div>
+        <a class="titleButtonTogle btn btn-block d-flex justify-content-start" data-toggle="collapse" href="#{{id}}" role="button" aria-expanded="false">
+            <ng-content select="[titleButtonTogle]"></ng-content>
+        </a>
+    </div>
+    <div class="collapse" [id]="id">
+        <div class="mx-3 p-1 contentBody">
+            <ng-content select="[contentBody]"></ng-content>
+        </div>
+    </div>
+</div>
