@@ -8,15 +8,20 @@
     <h4 class="my-5 text-center">Servicios a Pagar</h4>
     <div class="m-3 col-11 mx-auto">
       <div class="mx-auto">
-        <div *ngFor="let service of servicios$ | async">
+        <div *ngFor="let service of servicios$ | async; index as i">
           <app-view-box>
               <div box>
                   <input type="checkbox" name="" id="">
               </div>
-            <div titleButtonTogle class="d-flex justify-content-between w-100">
-              <p>{{ service.servicio }}</p>
-              <p>${{ service.deuda }}</p>
-            </div>
+            <ng-container titleButtonTogle>
+              <div class="d-flex justify-content-between w-100">
+                  <p>{{ service.servicio }}</p>
+                  <p>${{ service.deuda }}</p>
+              </div>
+            </ng-container>
+            <ng-container contentBody>
+                <p>{{ service.referencia }}</p>
+            </ng-container>
           </app-view-box>
         </div>
       </div>
