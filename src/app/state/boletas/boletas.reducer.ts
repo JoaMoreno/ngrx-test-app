@@ -4,8 +4,10 @@ import * as boletasActions from './boletas.actions';
 export const boletasFeatureKey = 'boletas'
 
 export interface Servicios {
+    isSelected: boolean;
     servicio: string;
     deuda: number;
+    referencia: string;
 }
 export interface State {
     servicios: Servicios[]
@@ -16,14 +18,20 @@ export const initialState: State = {
         {
             servicio: 'Netflix',
             deuda: 505,
+            isSelected: false,
+            referencia: 'AXCD-1122341511'
         },
         {
             servicio: 'Spotify',
             deuda: 764,
+            isSelected: false,
+            referencia: 'LKA-14525474586'
         },
         {
             servicio: 'Mercado Libre',
             deuda: 985,
+            isSelected: false,
+            referencia: 'MELI-15246359853'
         }
     ]
 }

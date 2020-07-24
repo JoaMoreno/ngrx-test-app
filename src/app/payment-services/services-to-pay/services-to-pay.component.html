@@ -10,9 +10,11 @@
       <div class="mx-auto">
         <div *ngFor="let service of servicios$ | async">
           <app-view-box>
+              <div box>
+                  <input type="checkbox" name="" id="">
+              </div>
             <div titleButtonTogle class="d-flex justify-content-between w-100">
               <p>{{ service.servicio }}</p>
-
               <p>${{ service.deuda }}</p>
             </div>
           </app-view-box>
