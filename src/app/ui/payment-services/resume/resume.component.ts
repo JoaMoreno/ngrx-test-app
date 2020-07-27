@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { State } from 'src/app/state/reducers';
+import { State } from 'src/app/application/state/reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 // Selectores
-import * as fromBoletas from '../../state/boletas/boletas.selector'
-import * as fromPaymentMethods from '../../state/paymentMethods/paymentMethos.selector'
+import * as fromBoletas from '../../../application/state/boletas/boletas.selector'
+import * as fromPaymentMethods from '../../../application/state/paymentMethods/paymentMethos.selector'
 // Interfaces
-import { Servicios } from 'src/app/state/boletas/boletas.reducer';
-import { Metodos } from 'src/app/state/paymentMethods/paymentMethos.reducer';
+import { Servicios } from 'src/app/application/state/boletas/boletas.reducer';
+import { Metodos } from 'src/app/application/state/paymentMethods/paymentMethos.reducer';
 
 @Component({
   selector: 'app-resume',

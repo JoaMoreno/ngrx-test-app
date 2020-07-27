@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Metodos } from 'src/app/state/paymentMethods/paymentMethos.reducer';
+import { Metodos } from 'src/app/application/state/paymentMethods/paymentMethos.reducer';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { State } from 'src/app/state/reducers';
-import * as fromPaymentMethods from '../../state/paymentMethods/paymentMethos.selector'
+import { State } from 'src/app/application/state/reducers';
+import * as fromPaymentMethods from '../../../application/state/paymentMethods/paymentMethos.selector'
 
 @Component({
   selector: 'app-payment-methods',
