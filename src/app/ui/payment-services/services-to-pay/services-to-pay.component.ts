@@ -23,7 +23,6 @@ export class ServicesToPayComponent implements OnInit {
   }
 
   next(){
-    this.store$.dispatch(fromNavigationActions.setNavigationState({validation: [{serviceSelected: 'Naranja'}]}))
     this._navigation.redirecTo('/step-two')
   }
 

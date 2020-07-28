@@ -9,7 +9,7 @@
       <div class="m-3 col-11 mx-auto">
         <div class="mx-auto">
           <div *ngFor="let metodo of metodos$ | async; index as i">
-            <app-view-box>
+            <app-view-box (click)="next(metodo)">
               <ng-container titleButtonTogle>
                 <div class="d-flex justify-content-between w-100">
                     <h5>{{ metodo.metodo }}</h5>

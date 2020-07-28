@@ -12,7 +12,7 @@ export const initialState: State = {
 };
 
 const _navigationReducer = createReducer(initialState,
-  on(actions.setNavigationState, (state,{validation}) => ({...state,validations: [...validation]})),
+  on(actions.setNavigationState, (state,{validation}) => ({...state, ...[validation]})),
 );
 
 export function reducer(state, action) {
