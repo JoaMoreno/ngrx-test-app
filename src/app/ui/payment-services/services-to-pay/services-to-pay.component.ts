@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { State } from 'src/app/application/state/reducers';
+import { State } from 'src/app/application/state/boletas/boleta.reducer';
 import { Store } from '@ngrx/store';
-import * as fromBoletas from '../../../application/state/boletas/boletas.selector'
-import * as fromNavigationActions from '../../../application/state/navigation/navigation.action'
-import { Servicios } from 'src/app/application/state/boletas/boletas.reducer';
-import { Observable } from 'rxjs';
+import * as fromBoletasSelectores from '../../../application/state/boletas/boleta.selectors'
 import { NavigationService } from 'src/app/infrastructure/services/navigation.service';
+import { updateBoleta, updateBoletas } from 'src/app/application/state/boletas/boleta.actions';
+import { Update } from '@ngrx/entity';
+import { Boleta } from 'src/app/application/state/boletas/boleta.model';
 
 @Component({
   selector: 'app-services-to-pay',
@@ -14,17 +14,44 @@ import { NavigationService } from 'src/app/infrastructure/services/navigation.se
 })
 export class ServicesToPayComponent implements OnInit {
 
-  servicios$: Observable<Servicios[]>
+  servicios$: Boleta[]
 
   constructor(private store$: Store<State>, private _navigation: NavigationService) { }
 
   ngOnInit(): void {
-    this.servicios$ = this.store$.select(fromBoletas.getBoletas)
+    this.store$.select(fromBoletasSelectores.getAllBoletas).subscribe(
+      (data)=>{
+        this.servicios$ = data
+      }
+    )
+    
   }
 
   next(){
     this._navigation.redirecTo('/step-two')
   }
 
+  onChangeItemSelected(boleta: Boleta) {
+    const selectedItem = boleta.isSelected;
+    const update: Update<Boleta> = {
+        id: boleta.id,
+        changes: { isSelected : !selectedItem }
+    };
+    this.store$.dispatch(updateBoleta({ boleta: update }));
+}
+
+// update(val: boolean) {
+//   this.store$
+//             .select(fromBoletasSelectores.selectAllBoletas)
+//             .pipe(take(1))
+//             .subscribe(data => {
+//                 const update: Update<Boleta>[] = data.map(transferencia => {
+//                     return {
+//                         id: transferencia.,
+//                         changes: { selected: val }
+//                     };
+//                 });
+//   this.store$.dispatch(updateBoletas({ boletas: update }));
+// }
 
 }

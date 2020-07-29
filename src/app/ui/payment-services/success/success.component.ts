@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/infrastructure/services/navigation.service';
 
 @Component({
   selector: 'app-success',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _navigation: NavigationService) { }
 
   ngOnInit(): void {
+  }
+
+  otherPayment(){
+    this._navigation.redirecTo('/step-one')
   }
 
 }

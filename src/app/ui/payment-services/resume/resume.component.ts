@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { State } from 'src/app/application/state/reducers';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 // Selectores
-import * as fromBoletas from '../../../application/state/boletas/boletas.selector'
-import * as fromPaymentMethods from '../../../application/state/paymentMethods/paymentMethos.selector'
+import * as fromBoletas from '../../../application/state/boletas/boleta.selectors'
+import * as fromPaymentMethods from '../../../application/state/paymentMethods/payment-methods.selectors'
 // Interfaces
-import { Servicios } from 'src/app/application/state/boletas/boletas.reducer';
-import { Metodos } from 'src/app/application/state/paymentMethods/paymentMethos.reducer';
+import { Boleta } from 'src/app/application/state/boletas/boleta.model';
+import { PaymentMethods } from 'src/app/application/state/paymentMethods/payment-methods.model';
+import { NavigationService } from 'src/app/infrastructure/services/navigation.service';
 
 @Component({
   selector: 'app-resume',
@@ -16,14 +16,26 @@ import { Metodos } from 'src/app/application/state/paymentMethods/paymentMethos.
 })
 export class ResumeComponent implements OnInit {
 
-  servicios$: Observable<Servicios[]>
-  metodos$: Observable<Metodos[]>
+  servicios$: Boleta[]
+  metodos$: PaymentMethods[]
 
-  constructor(private store$: Store<State>) { }
+  constructor(private store$: Store<State>, private _navigation: NavigationService) { }
 
   ngOnInit(): void {
-    this.servicios$ = this.store$.select(fromBoletas.getBoletas)
-    this.metodos$ = this.store$.select(fromPaymentMethods.getPaymentMethods)
+    this.store$.select(fromBoletas.getAllBoletasSelected).subscribe(
+      (data) => {
+        console.log('BOLETAS', data)
+        this.servicios$ = data
+      }
+    )
+    this.store$.select(fromPaymentMethods.getAllPaymentMethodsSelected).subscribe( data => {
+        this.metodos$ = data
+      }
+    )
+  }
+
+  success(){
+    this._navigation.redirecTo('/success')
   }
 
 }

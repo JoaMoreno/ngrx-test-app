@@ -1,1 +1,14 @@
-<p>success works!</p>
+<h2 class="center"></h2>
+<div class="m-5">
+  <div class="card__container card mx-auto my-auto">
+    <div *ngIf="false">
+      <button class="button-back btn mx-2">
+        <i class="fas fa-angle-left"></i>
+      </button>
+    </div>
+    <h4 class="my-5 text-center">Pago realizado con éxito!</h4>
+    <div class="button-container my-3 d-flex justify-content-center">
+      <button class="btn btn-block btn-info col-5" (click)="otherPayment()">Realizar otro pago</button>
+    </div>
+  </div>
+</div>
